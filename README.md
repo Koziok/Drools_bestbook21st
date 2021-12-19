@@ -1,1 +1,1 @@
-# Drools_bestbook21st
+Drools project for Artificial Intelligence laboratories
