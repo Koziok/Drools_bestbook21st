@@ -1,0 +1,1691 @@
+package com.sample
+import javax.swing.JOptionPane
+import javax.swing.JFrame
+import org.kie.api.runtime.KieRuntime
+import javax.swing.JRadioButton
+import javax.swing.JPanel
+global JFrame frame
+global javax.swing.JTextArea textArea
+import java.util.ArrayList
+import java.util.List
+import java.util.Arrays;
+import java.util.ArrayList
+import javax.swing.JLabel;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import com.sample.Dialog;
+
+rule "What kind of book do you want to read?"
+    when
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Popular Fiction");
+    mozliwosci.add("Literary Fiction");
+    mozliwosci.add("Fiction for Kids");
+    mozliwosci.add("Nonfiction");
+    mozliwosci.add("Self-Help");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "What kind of book do you want to read?", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Popular Fiction"
+    when
+    Dialog(pytanie == "What kind of book do you want to read?" && odpowiedz == "Popular Fiction")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Popular Fiction: Thrillers");
+    mozliwosci.add("Popular Fiction: Mystery");
+    mozliwosci.add("Popular Fiction: Family");
+    mozliwosci.add("Popular Fiction: Fantasy/Horror");
+    mozliwosci.add("Popular Fiction: Romance");
+    mozliwosci.add("Popular Fiction: Time Travel");
+    mozliwosci.add("Popular Fiction: Suspense");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Choose more specific topic.", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Popular Fiction: Thrillers"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Popular Fiction: Thrillers")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Before I Go to Sleep | S. J. Watson");
+    mozliwosci.add("Nineteen Minutes | Jodi Picoult");
+    mozliwosci.add("The Girl with the Dragon Tattoo | Stieg Larsson");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Before I Go to Sleep | S. J. Watson"
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Before I Go to Sleep | S. J. Watson")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Nineteen Minutes | Jodi Picoult"
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Nineteen Minutes | Jodi Picoult")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "The Girl with the Dragon Tattoo | Stieg Larsson"
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Girl with the Dragon Tattoo | Stieg Larsson")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Popular Fiction: Mystery"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Popular Fiction: Mystery")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Lovely The Bones | Alice Sebold");
+    mozliwosci.add("The Thirteenth Tale | Diane Setterfield");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Lovely The Bones | Alice Sebold"
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Lovely The Bones | Alice Sebold")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "The Thirteenth Tale | Diane Setterfield"
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Thirteenth Tale | Diane Setterfield")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Popular Fiction: Family"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Popular Fiction: Family")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Room | Emma Donoghue");
+    mozliwosci.add("My Sister's Keeper | Jodi Picoult");
+    mozliwosci.add("The Memory Keeper's Daughter | Kim Edwards");
+    mozliwosci.add("The Language of Flowers | Vanessa Diffenbaugh");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Room | Emma Donoghue "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Room | Emma Donoghue")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "My Sister's Keeper | Jodi Picoult "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "My Sister's Keeper | Jodi Picoult")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "The Memory Keeper's Daughter | Kim Edwards "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Memory Keeper's Daughter | Kim Edwards")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "The Language of Flowers | Vanessa Diffenbaugh "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Language of Flowers | Vanessa Diffenbaugh")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Popular Fiction: Fantasy/Horror"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Popular Fiction: Fantasy/Horror")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Historian | Elizabeth Kostova");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Historian | Elizabeth Kostova "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Historian | Elizabeth Kostova")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Popular Fiction: Romance"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Popular Fiction: Romance")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Other Boleyn Girl | Philippa Gregory");
+    mozliwosci.add("Snow Flower and the Secret Fan | Lisa See");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Other Boleyn Girl | Philippa Gregory "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Other Boleyn Girl | Philippa Gregory")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Snow Flower and the Secret Fan | Lisa See "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Snow Flower and the Secret Fan | Lisa See")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Popular Fiction: Time Travel"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Popular Fiction: Time Travel")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Time Traveler's Wife | Audrey Niffenegger");
+    mozliwosci.add("11/22/63 | Stephen King");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Time Traveler's Wife | Audrey Niffenegger "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Time Traveler's Wife | Audrey Niffenegger")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "11/22/63 | Stephen King "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "11/22/63 | Stephen King")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Popular Fiction: Suspense"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Popular Fiction: Suspense")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Gone Girl | Gillian Flynn");
+    mozliwosci.add("The Da Vinci Code | Dan Brown");
+    mozliwosci.add("Joyland | Stephen King");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Gone Girl | Gillian Flynn"
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Gone Girl | Gillian Flynn")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "The Da Vinci Code | Dan Brown"
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Da Vinci Code | Dan Brown")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Joyland | Stephen King "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Joyland | Stephen King")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Literary Fiction"
+    when
+    Dialog(pytanie == "What kind of book do you want to read?" && odpowiedz == "Literary Fiction")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Literary Fiction: Dystopia");
+    mozliwosci.add("Literary Fiction: Fantasy");
+    mozliwosci.add("Literary Fiction: Identity");
+    mozliwosci.add("Literary Fiction: Magical Realism");
+    mozliwosci.add("Literary Fiction: Comic Books");
+    mozliwosci.add("Literary Fiction: Crime");
+    mozliwosci.add("Literary Fiction: History");
+    mozliwosci.add("Literary Fiction: Family");
+    mozliwosci.add("Literary Fiction: Mystery");
+    mozliwosci.add("Literary Fiction: Baseball");
+    mozliwosci.add("Literary Fiction: New Culture");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Choose more specific topic.", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Literary Fiction: Dystopia"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Literary Fiction: Dystopia")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Road | Cormac McCarthy");
+    mozliwosci.add("Oryx and Crake | Margaret Atwood");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Road | Cormac McCarthy "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Road | Cormac McCarthy")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Oryx and Crake | Margaret Atwood "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Oryx and Crake | Margaret Atwood")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Literary Fiction: Fantasy"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Literary Fiction: Fantasy")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("American Gods | Neil Gaiman");
+    mozliwosci.add("Never Let Me Go | Kazuo Ishiguro");
+    mozliwosci.add("Literary Fiction: Other Fantasy");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Choose more specific topic.", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "American Gods | Neil Gaiman"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "American Gods | Neil Gaiman")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Never Let Me Go | Kazuo Ishiguro"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Never Let Me Go | Kazuo Ishiguro")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Literary Fiction: Other Fantasy"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Literary Fiction: Other Fantasy")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Other Fantasy: Magic");
+    mozliwosci.add("Other Fantasy: Epic");
+    mozliwosci.add("Other Fantasy: Vampires");
+    mozliwosci.add("Other Fantasy: Literary");
+    mozliwosci.add("Other Fantasy: Video Games");
+    mozliwosci.add("Other Fantasy: Historical");
+    mozliwosci.add("Other Fantasy: Romance");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Choose more specific topic.", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Other Fantasy: Magic "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Other Fantasy: Magic")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Jonathan Strange & Mr. Norrell | Susanna Clarke");
+    mozliwosci.add("The Name of the Wind | Patrick Rothfuss");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Jonathan Strange & Mr. Norrell | Susanna Clarke "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Jonathan Strange & Mr. Norrell | Susanna Clarke")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "The Name of the Wind | Patrick Rothfuss "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Name of the Wind | Patrick Rothfuss")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Other Fantasy: Epic "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Other Fantasy: Epic")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("A Dance With Dragons | George R.R. Martin");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "A Dance With Dragons | George R.R. Martin "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "A Dance With Dragons | George R.R. Martin")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Other Fantasy: Vampires "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Other Fantasy: Vampires")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("A Discovery of Witches | Deborah Harkness");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "A Discovery of Witches | Deborah Harkness "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "A Discovery of Witches | Deborah Harkness")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Other Fantasy: Literary "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Other Fantasy: Literary")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Kafka on the Shore | Haruki Murakami");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Kafka on the Shore | Haruki Murakami "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Kafka on the Shore | Haruki Murakami")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Other Fantasy: Video Games "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Other Fantasy: Video Games")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Ready Player One | Ernest Cline");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Ready Player One | Ernest Cline "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Ready Player One | Ernest Cline")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Other Fantasy: Historical "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Other Fantasy: Historical")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Cloud Atlas | David Mitchell");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Cloud Atlas | David Mitchell "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Cloud Atlas | David Mitchell")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Other Fantasy: Romance"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Other Fantasy: Romance")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Matched | Ally Condie");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Matched | Ally Condie "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Matched | Ally Condie")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Literary Fiction: Identity "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Literary Fiction: Identity")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("White Teeth | Zadie Smith");
+    mozliwosci.add("The Brief Wondrous Life of Oscar Wao | Junot Diaz");
+    mozliwosci.add("The Namesake | Jhumpa Lahiri");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "White Teeth | Zadie Smith "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "White Teeth | Zadie Smith")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "The Brief Wondrous Life of Oscar Wao | Junot Diaz "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Brief Wondrous Life of Oscar Wao | Junot Diaz")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "The Namesake | Jhumpa Lahiri "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Namesake | Jhumpa Lahiri")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Literary Fiction: Magical Realism "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Literary Fiction: Magical Realism")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The History of Love | Nicole Krauss");
+    mozliwosci.add("Extremely Loud and Incredibly Close | Jonathan Safran Foer");
+    mozliwosci.add("Life of Pi | Yann Martel");
+    mozliwosci.add("Everything is Illuminated | Jonathan Safran Foer");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The History of Love | Nicole Krauss "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The History of Love | Nicole Krauss")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Extremely Loud and Incredibly Close | Jonathan Safran Foer "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Extremely Loud and Incredibly Close | Jonathan Safran Foer")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Life of Pi | Yann Martel "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Life of Pi | Yann Martel")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Everything is Illuminated | Jonathan Safran Foer "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Everything is Illuminated | Jonathan Safran Foer")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Literary Fiction: Comic Books "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Literary Fiction: Comic Books")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Amazing Adventures of Kavalier & Clay | Michael Chabon");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Amazing Adventures of Kavalier & Clay | Michael Chabon "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Amazing Adventures of Kavalier & Clay | Michael Chabon")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Literary Fiction: Crime "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Literary Fiction: Crime")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("No Country for Old Men | Cormac McCarthy");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "No Country for Old Men | Cormac McCarthy "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "No Country for Old Men | Cormac McCarthy")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Literary Fiction: History "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Literary Fiction: History")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Wolf Hall | Hilary Mantel");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Wolf Hall | Hilary Mantel "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Wolf Hall | Hilary Mantel")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Literary Fiction: Family"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Literary Fiction: Family")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Corrections | Jonathan Franzen");
+    mozliwosci.add("Middlesex | Jeffrey Eugenides");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Corrections | Jonathan Franzen "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Corrections | Jonathan Franzen")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Middlesex | Jeffrey Eugenides "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Middlesex | Jeffrey Eugenides")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Literary Fiction: Mystery"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Literary Fiction: Mystery")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Mystery: Suspense");
+    mozliwosci.add("Mystery: Literary");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Choose more specific topic.", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Mystery: Suspense"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Mystery: Suspense")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Atonement | Ian McEwan");
+    mozliwosci.add("The Traitor's Emblem | Juan Gomez|Jurado");
+    mozliwosci.add("Tha Shadow of the Wind | Carlos Ruiz Zafon");
+    mozliwosci.add("Bel Canto | Ann Patchett");
+    mozliwosci.add("The Curious Incident of The Dog in the Night+Time | Mark Haddon");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Atonement | Ian McEwan "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Atonement | Ian McEwan")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "The Traitor's Emblem | Juan Gomez|Jurado "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Traitor's Emblem | Juan Gomez|Jurado")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Tha Shadow of the Wind | Carlos Ruiz Zafon "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Tha Shadow of the Wind | Carlos Ruiz Zafon")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Bel Canto | Ann Patchett "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Bel Canto | Ann Patchett")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "The Curious Incident of The Dog in the Night+Time | Mark Haddon "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Curious Incident of The Dog in the Night+Time | Mark Haddon")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Mystery: Literary"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Mystery: Literary")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Sweetness at the Bottom of the Pie | Alan Bradley");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Sweetness at the Bottom of the Pie | Alan Bradley "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Sweetness at the Bottom of the Pie | Alan Bradley")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Literary Fiction: Baseball "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Literary Fiction: Baseball")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Art of Fielding | Chad Harbach");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Art of Fielding | Chad Harbach "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Art of Fielding | Chad Harbach")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Literary Fiction: New Culture"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Literary Fiction: New Culture")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("New Culture: Civil Rights");
+    mozliwosci.add("New Culture: Epistolary");
+    mozliwosci.add("New Culture: Japan");
+    mozliwosci.add("New Culture: Historical");
+    mozliwosci.add("New Culture: Romance");
+    mozliwosci.add("New Culture: War");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Choose more specific topic.", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "New Culture: Civil Rights "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "New Culture: Civil Rights")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Help | Kathryn Stockett");
+    mozliwosci.add("The Secret Life of Bees | Sue Monk Kidd");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Help | Kathryn Stockett "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Help | Kathryn Stockett")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "The Secret Life of Bees | Sue Monk Kidd "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Secret Life of Bees | Sue Monk Kidd")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "New Culture: Epistolary "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "New Culture: Epistolary")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Guernsey Literary and Potato Peel Pie Society | Mary Ann Shaffer, Annie Barrows");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Guernsey Literary and Potato Peel Pie Society | Mary Ann Shaffer, Annie Barrows "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Guernsey Literary and Potato Peel Pie Society | Mary Ann Shaffer, Annie Barrows")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "New Culture: Japan "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "New Culture: Japan")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Thousand Autumns of Jacob De Zoet | David Mitchell");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Thousand Autumns of Jacob De Zoet | David Mitchell "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Thousand Autumns of Jacob De Zoet | David Mitchell")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "New Culture: Historical"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "New Culture: Historical")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Kite Runner | Khaled Hosseini");
+    mozliwosci.add("A Thousand Splendid Suns | Khaled Hosseini");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Kite Runner | Khaled Hosseini "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Kite Runner | Khaled Hosseini")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "A Thousand Splendid Suns | Khaled Hosseini "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "A Thousand Splendid Suns | Khaled Hosseini")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "New Culture: Romance"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "New Culture: Romance")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Water for Elephants | Sara Gruen");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Water for Elephants | Sara Gruen "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Water for Elephants | Sara Gruen")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "New Culture: War"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "New Culture: War")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Falls of Giants | Ken Follett");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Falls of Giants | Ken Follett "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Falls of Giants | Ken Follett")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Fiction for Kids"
+    when
+    Dialog(pytanie == "What kind of book do you want to read?" && odpowiedz == "Fiction for Kids")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Fiction for Kids: Young Adults");
+    mozliwosci.add("Fiction for Kids: Children's Literature");
+    mozliwosci.add("Fiction for Kids: Teen Literature");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Choose more specific topic.", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Fiction for Kids: Young Adults"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Fiction for Kids: Young Adults")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Young Adults: Historical");
+    mozliwosci.add("Young Adults: Humor");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Choose more specific topic.", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Young Adults: Historical"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Young Adults: Historical")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Diary of a Wimpy Kid | Jeff Kinney");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Diary of a Wimpy Kid | Jeff Kinney "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Diary of a Wimpy Kid | Jeff Kinney")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Young Adults: Humor "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Young Adults: Humor")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Book Thief | Markus Zusak");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Book Thief | Markus Zusak "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Book Thief | Markus Zusak")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Fiction for Kids: Children's Literature"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Fiction for Kids: Children's Literature")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Children's Literature: Coming of Age");
+    mozliwosci.add("Children's Literature: Thriller");
+    mozliwosci.add("Children's Literature: Peril");
+    mozliwosci.add("Children's Literature: Fantasy");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Choose more specific topic.", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Children's Literature: Coming of Age "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Children's Literature: Coming of Age")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Wonder | R. J. Palacio");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Wonder | R. J. Palacio "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Wonder | R. J. Palacio")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Children's Literature: Thriller "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Children's Literature: Thriller")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Lightning Thief | Rick Riordan");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Lightning Thief | Rick Riordan "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Lightning Thief | Rick Riordan")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Children's Literature: Peril "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Children's Literature: Peril")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("A Series of Unfortunate Events: The End | Lemony Snicket");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "A Series of Unfortunate Events: The End | Lemony Snicket "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "A Series of Unfortunate Events: The End | Lemony Snicket")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Children's Literature: Fantasy"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Children's Literature: Fantasy")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Harry Potter and the Deathy Hallows | J.K. Rowling");
+    mozliwosci.add("Coraline | Neil Gaiman");
+    mozliwosci.add("The Graveyard Book | Neil Gaiman");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Harry Potter and the Deathy Hallows | J.K. Rowling "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Harry Potter and the Deathy Hallows | J.K. Rowling")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Coraline | Neil Gaiman "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Coraline | Neil Gaiman")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "The Graveyard Book | Neil Gaiman "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Graveyard Book | Neil Gaiman")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Fiction for Kids: Teen Literature"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Fiction for Kids: Teen Literature")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Teen Literature: Historical");
+    mozliwosci.add("Teen Literature: Thriller");
+    mozliwosci.add("Teen Literature: Fantasy");
+    mozliwosci.add("Teen Literature: Relationships");
+    mozliwosci.add("Teen Literature: Vampires");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Choose more specific topic.", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Teen Literature: Historical"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Teen Literature: Historical")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Clockwork Angel | Cassandra Clare");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Clockwork Angel | Cassandra Clare "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Clockwork Angel | Cassandra Clare")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Teen Literature: Thriller"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Teen Literature: Thriller")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Hunger Games | Suzanne Collins");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Hunger Games | Suzanne Collins "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Hunger Games | Suzanne Collins")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Teen Literature: Fantasy"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Teen Literature: Fantasy")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Eragon | Christopher Paolini");
+    mozliwosci.add("Insurgent | Veronica Roth");
+    mozliwosci.add("City of Bones | Cassandra Clare");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Eragon | Christopher Paolini "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Eragon | Christopher Paolini")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Insurgent | Veronica Roth "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Insurgent | Veronica Roth")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "City of Bones | Cassandra Clare "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "City of Bones | Cassandra Clare")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Teen Literature: Relationships"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Teen Literature: Relationships")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Fault in Our Stars | John Green");
+    mozliwosci.add("Looking for Alaska | John Green");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Fault in Our Stars | John Green "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Fault in Our Stars | John Green")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Looking for Alaska | John Green "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Looking for Alaska | John Green")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Teen Literature: Vampires"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Teen Literature: Vampires")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Twilight | Stephanie Meyer");
+    mozliwosci.add("Vampire Academy | Richelle Mead");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Twilight | Stephanie Meyer "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Twilight | Stephanie Meyer")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Vampire Academy | Richelle Mead "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Vampire Academy | Richelle Mead")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Nonfiction"
+    when
+    Dialog(pytanie == "What kind of book do you want to read?" && odpowiedz == "Nonfiction")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Nonfiction: Memoirs");
+    mozliwosci.add("Nonfiction: Food");
+    mozliwosci.add("Nonfiction: Business");
+    mozliwosci.add("Nonfiction: Biography");
+    mozliwosci.add("Nonfiction: Grammar");
+    mozliwosci.add("Nonfiction: History");
+    mozliwosci.add("Nonfiction: Humor");
+    mozliwosci.add("Nonfiction: Inspiration");
+    mozliwosci.add("Nonfiction: U.S. Government");
+    mozliwosci.add("Nonfiction: Nutrition");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Choose more specific topic.", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Nonfiction: Memoirs"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Nonfiction: Memoirs")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Memoirs: Family");
+    mozliwosci.add("Memoirs: Humor");
+    mozliwosci.add("Memoirs: Medical");
+    mozliwosci.add("Memoirs: Current Events");
+    mozliwosci.add("Memoirs: Self-Fulfilment");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Choose more specific topic.", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Memoirs: Family"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Memoirs: Family")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Glass Castle | Jeannette Walls");
+    mozliwosci.add("A Heartbreaking Work of Staggering Genius | Dave Eggers");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Glass Castle | Jeannette Walls "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Glass Castle | Jeannette Walls")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "A Heartbreaking Work of Staggering Genius | Dave Eggers "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "A Heartbreaking Work of Staggering Genius | Dave Eggers")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Memoirs: Humor"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Memoirs: Humor")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Bossypants | Tina Fey");
+    mozliwosci.add("Running with Scissors | Augusten Burroughs");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Bossypants | Tina Fey "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Bossypants | Tina Fey")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Running with Scissors | Augusten Burroughs "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Running with Scissors | Augusten Burroughs")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Memoirs: Medical "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Memoirs: Medical")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Proof of Heaven: A Neurosurgeon's Journey into the Afterlife | Eben Alexander");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Proof of Heaven: A Neurosurgeon's Journey into the Afterlife | Eben Alexander "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Proof of Heaven: A Neurosurgeon's Journey into the Afterlife | Eben Alexander")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Memoirs: Current Events "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Memoirs: Current Events")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Three Cups of Tea | Greg Morthenson, David Olivier Relin");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Three Cups of Tea | Greg Morthenson, David Olivier Relin "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Three Cups of Tea | Greg Morthenson, David Olivier Relin")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Memoirs: Self-Fulfilment "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Memoirs: Self-Fulfilment")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Eat, Pray, Love | Elizabeth Gilbert");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Eat, Pray, Love | Elizabeth Gilbert "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Eat, Pray, Love | Elizabeth Gilbert")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Nonfiction: Food "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Nonfiction: Food")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Omnivore's Dilemma: A Natural History of Four Meals | Michael Pollan");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Omnivore's Dilemma: A Natural History of Four Meals | Michael Pollan "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Omnivore's Dilemma: A Natural History of Four Meals | Michael Pollan")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Nonfiction: Business "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Nonfiction: Business")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Tipping Point | Malcolm Gladwell");
+    mozliwosci.add("Blink | Malcolm Gladwell");
+    mozliwosci.add("Freakonomics | Steven D. Levitt");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Tipping Point | Malcolm Gladwell "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Tipping Point | Malcolm Gladwell")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Blink | Malcolm Gladwell "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Blink | Malcolm Gladwell")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Freakonomics | Steven D. Levitt "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Freakonomics | Steven D. Levitt")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Nonfiction: Biography "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Nonfiction: Biography")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Immortal Life of Henrietta Lacks | Rebecca Skloot");
+    mozliwosci.add("Persepolis | Marjane Satrapi");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Immortal Life of Henrietta Lacks | Rebecca Skloot "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Immortal Life of Henrietta Lacks | Rebecca Skloot")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Persepolis | Marjane Satrapi "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Persepolis | Marjane Satrapi")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Nonfiction: Grammar "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Nonfiction: Grammar")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Eats, Shoots and Leaves | Lynne Truss");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Eats, Shoots and Leaves | Lynne Truss "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Eats, Shoots and Leaves | Lynne Truss")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Nonfiction: History"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Nonfiction: History")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Devil in the White City: Murder, Magic and Madness at the Fair That Changed America | Erik Larson");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Devil in the White City: Murder, Magic and Madness at the Fair That Changed America | Erik Larson "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Devil in the White City: Murder, Magic and Madness at the Fair That Changed America | Erik Larson")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Nonfiction: Humor"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Nonfiction: Humor")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Talk Pretty One Day | David Sedsris");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Talk Pretty One Day | David Sedsris "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Talk Pretty One Day | David Sedsris")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Nonfiction: Inspiration "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Nonfiction: Inspiration")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Last Lecture | Randy Pausch");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Last Lecture | Randy Pausch "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Last Lecture | Randy Pausch")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Nonfiction: U.S. Government "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Nonfiction: U.S. Government")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Liberty Amendments: Restoring the American Republic | Mark R. Levin");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Liberty Amendments: Restoring the American Republic | Mark R. Levin "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Liberty Amendments: Restoring the American Republic | Mark R. Levin")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Nonfiction: Nutrition "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Nonfiction: Nutrition")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Fast Food Nation | Eric Schlosser");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Fast Food Nation | Eric Schlosser "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Fast Food Nation | Eric Schlosser")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Self-Help"
+    when
+    Dialog(pytanie == "What kind of book do you want to read?" && odpowiedz == "Self-Help")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Self-Help: Relationships");
+    mozliwosci.add("Self-Help: Inspirational");
+    mozliwosci.add("Self-Help: Business");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Choose more specific topic.", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Self-Help: Relationships"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Self-Help: Relationships")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("Quiet: The Power of Introverts in a World That Can't Stop Talking | Susan Cain");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "Quiet: The Power of Introverts in a World That Can't Stop Talking | Susan Cain "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Quiet: The Power of Introverts in a World That Can't Stop Talking | Susan Cain")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Self-Help: Inspirational "
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Self-Help: Inspirational")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Five People You Meet in Heaven | Mitch Albom");
+    mozliwosci.add("Daring Greatly: How the Courage to Be Vulnerable Transforms the Way We Live, Love, Parent, and Lead | Brene Brown");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Five People You Meet in Heaven | Mitch Albom "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Five People You Meet in Heaven | Mitch Albom")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Daring Greatly: How the Courage to Be Vulnerable Transforms the Way We Live, Love, Parent, and Lead | Brene Brown "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Daring Greatly: How the Courage to Be Vulnerable Transforms the Way We Live, Love, Parent, and Lead | Brene Brown")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Self-Help: Business"
+    when
+    Dialog(pytanie == "Choose more specific topic." && odpowiedz == "Self-Help: Business")
+    then
+    ArrayList<String> mozliwosci = new ArrayList<>();
+    mozliwosci.add("The Five Dysfunctions of a Team | Patrick Lencioni");
+    mozliwosci.add("Strengths Finder 2.0 | Tom Rath");
+    mozliwosci.add("Lean In | Sheryl Sandberg");
+    mozliwosci.add("Good to Great | Jim Collins");
+    mozliwosci.add("The Power of Habit: Why We Do What We Do in Life and Business | Charles Duhigg");
+    Dialog odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "There you go!", mozliwosci);
+    insert (odpowiedz);
+end
+
+rule "The Five Dysfunctions of a Team | Patrick Lencioni "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Five Dysfunctions of a Team | Patrick Lencioni")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Strengths Finder 2.0 | Tom Rath "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Strengths Finder 2.0 | Tom Rath")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Lean In | Sheryl Sandberg "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Lean In | Sheryl Sandberg")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "Good to Great | Jim Collins "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "Good to Great | Jim Collins")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+
+rule "The Power of Habit: Why We Do What We Do in Life and Business | Charles Duhigg "
+    when
+    Dialog(pytanie == "There you go!" && odpowiedz == "The Power of Habit: Why We Do What We Do in Life and Business | Charles Duhigg")
+    then
+    final_message(frame, kcontext.getKieRuntime(), "Wybór zosta³ dokonany - zamykam program");
+end
+
+function void final_message(JFrame frame, KieRuntime krt, String polecane) {
+    final JPanel panel = new JPanel();
+    String text = polecane;
+    panel.add(new JLabel(text));
+    JOptionPane.showMessageDialog(frame, panel);
+}
+
+function Dialog zapytaj(JFrame frame, KieRuntime krt, String trescPytania, ArrayList odpowiedzi) {
+
+    class Listener implements ItemListener {
+        private Dialog odpowiedz;
+        private String wybrana;
+        public Listener(Dialog odpowiedz, String wybrana) {
+            this.odpowiedz = odpowiedz;
+            this.wybrana = wybrana;
+        }
+
+        @Override
+        public void itemStateChanged(ItemEvent event) {
+            if (event.getStateChange() == ItemEvent.SELECTED) {
+                odpowiedz.setOdpowiedz(wybrana);
+            }
+        }
+    }
+    Dialog odpowiedz = new Dialog(trescPytania, (String) odpowiedzi.get(0));
+
+    final JPanel panel = new JPanel(new GridLayout(0, 1));
+    panel.add(new JLabel(trescPytania));
+
+    ArrayList < JRadioButton > listaButtonow = new ArrayList < > ();
+
+    for (int i = 0; i < odpowiedzi.size(); i++) {
+        String text = (String) odpowiedzi.get(i);
+        JRadioButton nowy = new JRadioButton(text);
+        Listener newListener = new Listener(odpowiedz, text);
+        nowy.addItemListener(newListener);
+        listaButtonow.add(nowy);
+    }
+
+    listaButtonow.get(0).setSelected(true);
+    odpowiedz.setOdpowiedz((String) odpowiedzi.get(0));
+
+    ButtonGroup group = new ButtonGroup();
+    for (int i = 0; i < listaButtonow.size(); i++) {
+        group.add(listaButtonow.get(i));
+        panel.add(listaButtonow.get(i));
+    }
+    Object[] options = {
+        "Proceed"
+    };
+    if (JOptionPane.showConfirmDialog(frame, panel, "Question", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE) < 0) {
+        odpowiedz.setOdpowiedz("Zakoncz program");
+    }
+
+    return odpowiedz;
+}
